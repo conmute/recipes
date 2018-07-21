@@ -1,0 +1,38 @@
+{
+  "name": "analyze",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "clean": "rm -rf ./tmp && rm -rf ./static",
+    "source-map-explorer": "source-map-explorer build/static/js/*.js",
+    "webpack": "NODE_ENV=development webpack --config node_modules/react-scripts/config/webpack.config.dev.js",
+    "webpack-profile": "npm run webpack -- --profile --json | tail -n +4 > tmp/stats.json",
+    "analyzer": "webpack-bundle-analyzer tmp/stats.json",
+    "madge": "node ./scripts/madge.js",
+    "dependo": "node ./scripts/dependo.js",
+    "depcruise": "node ./scripts/depcruise.js | dot -T svg > tmp/dependencygraph.svg",
+    "analyze": "npm run madge && npm run depcruise && npm run webpack-profile && npm run analyzer",
+    "analyze:colony": "node scripts/colony.js && serve ./tmp/colony"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "colony": "^0.0.7",
+    "dependency-cruiser": "^4.3.1",
+    "dependo": "^0.2.0",
+    "madge": "^3.2.0",
+    "serve": "^9.3.0",
+    "source-map-explorer": "^1.5.0",
+    "webpack-bundle-analyzer": "^2.13.1"
+  }
+}

@@ -1,0 +1,10 @@
+{
+	"fontSize": "10px",
+    "layout": "dot",
+    "includeNpm": true,
+	"graphVizOptions": {
+		"G": {
+			"rankdir": "LR"
+		}
+	}
+}
